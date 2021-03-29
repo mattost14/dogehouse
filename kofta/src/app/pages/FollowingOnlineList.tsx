@@ -32,7 +32,7 @@ export const FollowingOnlineList: React.FC<FriendListProps> = () => {
             className={`border-b border-solid border-simple-gray-3c flex py-4 px-2 items-center`}
             key={u.id}
           >
-            <button onClick={() => history.push(`/user`, u)}>
+            <button onClick={() => history.push(`/user/${u.username}`, u)}>
               <Avatar src={u.avatarUrl} isOnline={u.online} />
             </button>
             <button
@@ -47,7 +47,7 @@ export const FollowingOnlineList: React.FC<FriendListProps> = () => {
               className={`ml-4 flex-1 text-left`}
             >
               <div className={`text-lg`}>
-                {u.displayName || "@" + u.username}
+                {u.displayName || <div className={`font-mono`}>@{u.username}</div>}
               </div>
               <div style={{ color: "" }}>
                 {u.currentRoom ? (

@@ -16,11 +16,21 @@ interface LinkToken {
 }
 
 interface BlockToken {
-	t: "block";
-	v: string;
+  t: "block";
+  v: string;
 }
 
-export type RoomChatMessageToken = TextToken | MentionToken | LinkToken | BlockToken;
+interface EmoteToken {
+  t: "emote";
+  v: string;
+}
+
+export type RoomChatMessageToken =
+  | TextToken
+  | MentionToken
+  | LinkToken
+  | BlockToken
+  | EmoteToken;
 
 const colors = [
   "#ff2366",
@@ -46,6 +56,7 @@ export interface RoomChatMessage {
   userId: string;
   avatarUrl: string;
   color: string;
+  username: string;
   displayName: string;
   tokens: RoomChatMessageToken[];
   deleted?: boolean;

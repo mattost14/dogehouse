@@ -63,15 +63,17 @@ export const FollowListPage: React.FC<FollowListPageProps> = () => {
             className={`border-b border-solid border-simple-gray-3c flex py-4 px-2 items-center`}
             key={profile.id}
           >
-            <button onClick={() => history.push(`/user`, profile)}>
+            <button
+              onClick={() => history.push(`/user/${profile.username}`, profile)}
+            >
               <Avatar src={profile.avatarUrl} />
             </button>
             <button
-              onClick={() => history.push(`/user`, profile)}
+              onClick={() => history.push(`/user/${profile.username}`, profile)}
               className={`ml-8`}
             >
               <div className={`text-lg`}>{profile.displayName}</div>
-              <div style={{ color: "" }}>@{profile.username}</div>
+              <div style={{ color: "" }} className={`font-mono`}>@{profile.username}</div>
             </button>
             {me?.id === profile.id ||
             profile.youAreFollowing === undefined ||
@@ -107,7 +109,7 @@ export const FollowListPage: React.FC<FollowListPageProps> = () => {
                   }}
                   variant="small"
                 >
-                  {profile.youAreFollowing ? "following" : "follow"}
+                  {profile.youAreFollowing ? t("pages.followList.followingHim") : t("pages.followList.followHim")}
                 </Button>
               </div>
             )}

@@ -50,7 +50,7 @@ export const BottomVoiceControl: React.FC<BottomVoiceControlProps> = ({
 
   const fullscreenChatOpen = useShouldFullscreenChat();
 
-  const buttons = [];
+  const buttons: React.ReactNode[] = [];
 
   const { t } = useTypeSafeTranslation();
 
@@ -105,7 +105,7 @@ export const BottomVoiceControl: React.FC<BottomVoiceControlProps> = ({
             ) : null}
           </div>
         </div>
-        Chat
+        {t("components.bottomVoiceControl.chat")}
       </button>,
       <button
         className={buttonStyle}
